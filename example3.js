@@ -29,9 +29,13 @@ db.sourceData.mapReduce(
     {
         out : "example3_results"
     }
+    , function()
+    {
+        db.example3_results.find(function (err, docs) {
+            if(err) console.log(err);
+            console.log(docs);
+            process.exit(1);
+        });
+    }
 );
 
-db.example3_results.find(function (err, docs) {
-    if(err) console.log(err);
-    console.log(docs);
-});

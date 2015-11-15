@@ -23,9 +23,14 @@ db.sourceData.mapReduce(
     {
         out : "example2_results"
     }
+    , function() {
+
+        //La fonction find affiche
+        db.example2_results.find(function (err, docs) {
+            if(err) console.log(err);
+            console.log(JSON.stringify(docs));
+            process.exit(1);
+        });
+
+    }
 );
-//La fonction find affiche
-db.example2_results.find(function (err, docs) {
-    if(err) console.log(err);
-    console.log(JSON.stringify(docs));
-});
